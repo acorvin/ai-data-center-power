@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Data Center Power</title>
+<meta name="description" content="The ten largest AI data centers in Epoch AI's database hold 39% of its tracked power capacity. Explore them by power, computing and ownership.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@300..500&display=swap">
+<style>
+:root{
+  --bg:#ffffff; --wash:#f8f7f4; --ink:#1c1e21; --muted:#5a5e66; --soft:#8b8e93; --faint:#e3e4e1;
+  --rose:#c06a85; --slate:#3f6c96;
+  --sans:"Geist","Helvetica Neue",Arial,sans-serif;
+  --mono:"Geist Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --max:1240px; --gutter:clamp(20px,5vw,56px); --gap:clamp(64px,9vw,120px);
+  --ease:cubic-bezier(.22,1,.36,1); --rowH:68px;
+}
+*{box-sizing:border-box;margin:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
+.mono{font-family:var(--mono);text-transform:uppercase;letter-spacing:.09em;font-size:13px;color:var(--muted)}
+a{color:inherit}
+header.top{display:flex;justify-content:space-between;align-items:center;padding:28px 0}
+.brand{font-family:var(--mono);font-size:15px;text-decoration:none;color:var(--ink)}
+.hero{padding:clamp(40px,8vw,96px) 0 var(--gap)}
+h1{font-weight:300;font-size:clamp(38px,6.6vw,88px);line-height:1.03;letter-spacing:-.028em;margin-top:22px;max-width:15em}
+h1 .g{color:var(--soft)}
+.lede{font-size:clamp(18px,2vw,22px);color:var(--muted);max-width:40em;margin-top:30px;line-height:1.5}
+.sec{padding-bottom:var(--gap)}
+.sec .mono.lab{display:block;margin-bottom:14px}
+h2{font-weight:300;font-size:clamp(28px,3.6vw,44px);line-height:1.1;letter-spacing:-.02em;max-width:22em}
+.cap{color:var(--muted);margin-top:14px;max-width:44em}
+/* legend */
+.legend{display:flex;flex-wrap:wrap;gap:8px 28px;margin-top:22px;font-size:15px}
+.legend i{display:inline-block;width:14px;height:14px;border-radius:50%;margin-right:9px;vertical-align:-2px}
+/* circles */
+.pack{position:relative;margin-top:28px}
+.pack svg{width:100%;height:auto;display:block;overflow:visible}
+.pack svg{touch-action:manipulation}
+.pack circle.s{fill:var(--slate);fill-opacity:.78;stroke:var(--bg);stroke-width:2;transition:fill-opacity .2s}
+.pack circle.t{fill:var(--rose);stroke:var(--bg);stroke-width:2;cursor:pointer;outline:none}
+.pack circle.s:hover{fill-opacity:1}
+.pack g.tg:hover circle.t,.pack g.tg:focus circle.t{stroke:var(--ink);stroke-width:2}
+.pack circle.ring{fill:none;stroke:var(--ink);stroke-width:2;opacity:0;pointer-events:none;transition:opacity .2s}
+.pack g.tg.on circle.ring{opacity:1}
+.pack text{font-family:var(--sans);font-weight:300;fill:var(--bg);text-anchor:middle;pointer-events:none}
+.tip{position:absolute;pointer-events:none;background:var(--ink);color:#fff;font-size:13.5px;line-height:1.35;padding:9px 12px;border-radius:6px;opacity:0;transform:translate(-50%,-100%);transition:opacity .12s;z-index:5;white-space:nowrap}
+.tip b{font-weight:600;display:block}
+.tip span{font-family:var(--mono);font-size:12px;opacity:.85}
+/* explorer */
+.explore{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:clamp(28px,5vw,72px);margin-top:36px;align-items:start}
+.seg{display:inline-flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.seg button{font:inherit;font-size:14px;font-family:var(--mono);text-transform:uppercase;letter-spacing:.06em;background:transparent;color:var(--muted);border:1px solid var(--faint);border-radius:999px;padding:8px 14px;cursor:pointer;transition:all .2s}
+.seg button:hover{border-color:var(--soft)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.seg button:focus-visible,.row:focus-visible,details summary:focus-visible,g.tg:focus-visible{outline:2px solid var(--slate);outline-offset:3px}
+.mdesc{color:var(--muted);font-size:15px;margin:14px 0 6px;min-height:3.2em;max-width:36em}
+.list{position:relative;margin-top:10px;border-top:1px solid var(--faint)}
+.row{position:absolute;left:0;right:0;height:var(--rowH);display:grid;grid-template-columns:34px minmax(0,1fr);column-gap:10px;align-items:center;border:0;border-bottom:1px solid var(--faint);background:transparent;text-align:left;font:inherit;color:inherit;cursor:pointer;padding:0 8px 0 0;transition:background .2s}
+.row:hover{background:var(--wash)}
+.row[aria-pressed="true"]{background:var(--wash)}
+.rk{font-family:var(--mono);font-size:15px;color:var(--soft)}
+.main{display:grid;grid-template-columns:minmax(0,1fr);row-gap:7px}
+.nm{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.nm b{font-weight:400;font-size:17px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nm .v{font-family:var(--mono);font-size:14px;color:var(--ink);white-space:nowrap}
+.track{height:14px;position:relative}
+.bar{position:absolute;left:0;top:0;height:14px;background:var(--rose);border-radius:0 4px 4px 0;opacity:.55;transition:opacity .2s}
+.row[aria-pressed="true"] .bar,.row:hover .bar{opacity:1}
+.pnote{font-family:var(--mono);font-size:11.5px;color:var(--soft);text-transform:uppercase;letter-spacing:.05em}
+/* detail */
+.detail{scroll-margin-top:16px;position:sticky;top:24px;border-top:1px solid var(--ink);padding-top:20px;min-height:340px}
+.detail h3{font-weight:300;font-size:clamp(26px,3vw,36px);line-height:1.1;letter-spacing:-.02em;margin:10px 0 4px}
+.detail .where{color:var(--muted)}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:18px 20px;margin-top:24px}
+.fact dt{font-family:var(--mono);font-size:12px;letter-spacing:.07em;text-transform:uppercase;color:var(--soft)}
+.fact dd{font-size:22px;font-weight:300;letter-spacing:-.01em;margin-top:2px}
+.fact dd small{display:block;font-size:13.5px;font-weight:400;color:var(--muted);letter-spacing:0;margin-top:2px;line-height:1.35}
+.who{margin-top:22px;border-top:1px solid var(--faint);padding-top:16px;font-size:15.5px}
+.who p+p{margin-top:8px}
+.who .k{font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:var(--soft);display:block}
+.conf{font-family:var(--mono);font-size:11.5px;color:var(--soft);text-transform:uppercase;letter-spacing:.04em;margin-left:5px}
+/* notes */
+.cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(24px,4vw,56px);margin-top:36px}
+.cols .n{font-weight:300;font-size:clamp(34px,4vw,52px);letter-spacing:-.02em;line-height:1}
+.cols h3{font-weight:400;font-size:19px;margin:14px 0 8px}
+.cols p{color:var(--muted);font-size:16px}
+.limits{margin-top:30px;max-width:46em;display:grid;gap:16px}
+.limits p{color:var(--muted);font-size:16px;padding-left:16px;border-left:1px solid var(--faint)}
+.limits p b{color:var(--ink);font-weight:500}
+details{margin-top:34px;border-top:1px solid var(--faint)}
+details summary{cursor:pointer;padding:16px 0;font-family:var(--mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);list-style:none}
+details summary::-webkit-details-marker{display:none}
+details summary::after{content:" +"}
+details[open] summary::after{content:" \2212"}
+.tw{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:780px;font-size:14.5px}
+th,td{text-align:left;padding:10px 12px 10px 0;border-bottom:1px solid var(--faint);vertical-align:top}
+th{font-family:var(--mono);font-size:11.5px;font-weight:400;text-transform:uppercase;letter-spacing:.06em;color:var(--soft)}
+td.num,th.num{text-align:right;font-family:var(--mono)}
+footer{border-top:1px solid var(--faint);padding:28px 0 56px;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;font-size:14px;color:var(--muted)}
+footer .src{max-width:46em}
+@media (max-width:860px){
+  .explore{grid-template-columns:minmax(0,1fr)}
+  .detail{position:static;min-height:0}
+  .cols{grid-template-columns:minmax(0,1fr)}
+  :root{--rowH:86px}
+  .nm b{white-space:normal;font-size:16px;line-height:1.25}
+  .detail{order:-1}
+}
+@media (prefers-reduced-motion:reduce){.row,.bar{transition:none}}
+/* shown inside alexcorvin.io (?embed=site): the page supplies its own title and column */
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+</head>
+<body>
+<div class="wrap">
+  <header class="top"><a class="brand" href="https://alexcorvin.io">alexcorvin.io</a><span class="mono">Data science</span></header>
+
+  <section class="hero">
+    <span class="mono">AI infrastructure &middot; October 2026</span>
+    <h1>Ten data centers hold 39% of the AI power capacity <span class="g">Epoch AI tracks.</span></h1>
+    <p class="lede">Epoch AI keeps an open database of the largest data centers built for artificial intelligence. Seventy-three of its 93 sites have power capacity today, 13,833 megawatts in all. This page looks at the ten largest, which hold 5,356 of them. Select a site to see who owns it, who uses it and how much computing it holds.</p>
+  </section>
+
+  <section class="sec" aria-labelledby="h-all">
+    <span class="mono lab">All 73 sites with capacity</span>
+    <h2 id="h-all">Each circle is one site, sized by power.</h2>
+    <p class="cap">The ten largest are numbered and in rose. Hover over or tap any circle for its name and capacity, or select a numbered one to open it below.</p>
+    <div class="legend"><span><i style="background:var(--rose)"></i>The ten largest, 5,356 MW</span><span><i style="background:var(--slate);opacity:.78"></i>The other 63 sites</span></div>
+    <div class="pack" id="pack"><div class="tip" id="tip" role="tooltip"></div></div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-ten">
+    <span class="mono lab">The ten largest</span>
+    <h2 id="h-ten">Rank them three ways and the order changes.</h2>
+    <div class="explore">
+      <div>
+        <span class="mono">Rank by</span><br>
+        <div class="seg" id="seg" role="group" aria-label="Rank the ten sites by"></div>
+        <p class="mdesc" id="mdesc"></p>
+        <div class="list" id="list"></div>
+      </div>
+      <aside class="detail" id="detail" aria-live="polite"></aside>
+    </div>
+    <details>
+      <summary>View the ten as a table</summary>
+      <div class="tw"><table id="tbl"></table></div>
+    </details>
+  </section>
+
+  <section class="sec" aria-labelledby="h-find">
+    <span class="mono lab">What stands out</span>
+    <h2 id="h-find">Three things in the ten.</h2>
+    <div class="cols">
+      <div><div class="n">8 of 10</div><h3>are in the United States</h3><p>The other two are both DayOne sites in Malaysia. Across all 73 sites with capacity, 60 are American.</p></div>
+      <div><div class="n">9th &rarr; 4th</div><h3>Google's Pryor site, by power and by computing</h3><p>It has the ninth-most power of the ten but the fourth-most computing, at an estimated 1,730 H100-equivalents per megawatt. The median across the 73 sites is 1,137.</p></div>
+      <div><div class="n">2 + 2</div><h3>sites share a place or an owner</h3><p>Two of the ten are in Memphis, Colossus 1 and Colossus 2. Two more are Microsoft's Fairwater sites, in Georgia and Wisconsin.</p></div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-lim">
+    <span class="mono lab">Before you quote this</span>
+    <h2 id="h-lim">What the numbers can and cannot say.</h2>
+    <div class="limits">
+      <p><b>These are estimates.</b> Epoch builds them from satellite imagery, permits and public documents. It says its power estimates fall within a factor of 1.4 of the true figure about 80% of the time.</p>
+      <p><b>The list is not complete.</b> Epoch estimates it covers about 43% of the world's deployed AI computing, so 13,833 megawatts is not a world total.</p>
+      <p><b>Twenty sites are missing from the circles.</b> They are in the database but show no capacity yet, so they have nothing to size.</p>
+      <p><b>Cost is not measured separately.</b> Epoch's data prices every site at the same $37.9 million per megawatt, so cost follows power exactly. This page shows it as an implied figure and does not rank by it.</p>
+      <p><b>Ownership carries Epoch's confidence.</b> Each owner and user is rated confident, likely or speculative, and the ratings are shown here. Epoch lists no owner or user for the two DayOne sites.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="src">Data: Epoch AI, <a href="https://epoch.ai/data/data-centers">AI Data Centers</a>, updated 5 October 2026, released under a Creative Commons Attribution license. Layout and analysis by Alex Corvin. Typeset in Geist and Geist Mono.</div>
+    <div class="mono"><a href="https://alexcorvin.io" style="text-decoration:none">alexcorvin.io</a></div>
+  </footer>
+</div>
+
+<script>
+(function(){
+const D={"sites": [{"n": "Colossus 2", "c": "United States", "mw": 946.0, "rank": 1}, {"n": "Anthropic-Amazon New Carlisle", "c": "United States", "mw": 910.0, "rank": 2}, {"n": "Microsoft Fairwater Atlanta", "c": "United States", "mw": 636.0, "rank": 3}, {"n": "DayOne Nusajaya", "c": "Malaysia", "mw": 473.0, "rank": 4}, {"n": "Meta Prometheus", "c": "United States", "mw": 471.0, "rank": 5}, {"n": "DayOne Kempas", "c": "Malaysia", "mw": 421.692, "rank": 6}, {"n": "OpenAI Stargate Abilene", "c": "United States", "mw": 421.0, "rank": 7}, {"n": "Microsoft Fairwater Wisconsin", "c": "United States", "mw": 369.0, "rank": 8}, {"n": "Google Pryor (North)", "c": "United States", "mw": 368.0, "rank": 9}, {"n": "Colossus 1", "c": "United States", "mw": 340.0, "rank": 10}, {"n": "Google New Albany", "c": "United States", "mw": 333.0, "rank": null}, {"n": "Google Columbus", "c": "United States", "mw": 303.0, "rank": null}, {"n": "Amazon Madison Mega Site", "c": "United States", "mw": 284.0, "rank": null}, {"n": "CoreWeave Denton TX", "c": "United States", "mw": 262.0, "rank": null}, {"n": "QTS Richmond 1", "c": "United States", "mw": 238.0, "rank": null}, {"n": "Google Bristow", "c": "United States", "mw": 238.0, "rank": null}, {"n": "Google Council Bluffs (East)", "c": "United States", "mw": 237.0, "rank": null}, {"n": "Google Omaha", "c": "United States", "mw": 237.0, "rank": null}, {"n": "Google Papillion", "c": "United States", "mw": 237.0, "rank": null}, {"n": "Amazon Ridgeland", "c": "United States", "mw": 228.0, "rank": null}, {"n": "VNET Bayin Ulanqab", "c": "China", "mw": 221.0, "rank": null}, {"n": "AWS New Albany", "c": "United States", "mw": 213.0, "rank": null}, {"n": "Microsoft Goodyear", "c": "United States", "mw": 202.0, "rank": null}, {"n": "Microsoft Project Osmium", "c": "United States", "mw": 190.0, "rank": null}, {"n": "Huawei Horinger", "c": "China", "mw": 184.3, "rank": null}, {"n": "Google Mesa", "c": "United States", "mw": 183.0, "rank": null}, {"n": "QTS Richmond 2", "c": "United States", "mw": 180.0, "rank": null}, {"n": "Meta-QTS Hillsboro 2", "c": "United States", "mw": 180.0, "rank": null}, {"n": "Meta Rosemount", "c": "United States", "mw": 178.0, "rank": null}, {"n": "Meta Jeffersonville", "c": "United States", "mw": 178.0, "rank": null}, {"n": "Meta Temple", "c": "United States", "mw": 178.0, "rank": null}, {"n": "Alibaba Zhangbei", "c": "China", "mw": 169.0, "rank": null}, {"n": "Google Storey County", "c": "United States", "mw": 161.0, "rank": null}, {"n": "Huawei Wuhu", "c": "China", "mw": 157.0, "rank": null}, {"n": "Google The Dalles", "c": "United States", "mw": 154.0, "rank": null}, {"n": "Meta Montgomery", "c": "United States", "mw": 153.0, "rank": null}, {"n": "Meta Kuna", "c": "United States", "mw": 152.0, "rank": null}, {"n": "Meta Cheyenne", "c": "United States", "mw": 152.0, "rank": null}, {"n": "Meta Huntsville", "c": "United States", "mw": 146.0, "rank": null}, {"n": "QTS Richmond 3", "c": "United States", "mw": 144.0, "rank": null}, {"n": "Google Lincoln", "c": "United States", "mw": 141.0, "rank": null}, {"n": "Google Lancaster", "c": "United States", "mw": 137.0, "rank": null}, {"n": "Meta Eagle Mountain", "c": "United States", "mw": 133.0, "rank": null}, {"n": "Coreweave Helios", "c": "United States", "mw": 132.0, "rank": null}, {"n": "AWS Berwick", "c": "United States", "mw": 108.0, "rank": null}, {"n": "Google Kansas City East", "c": "United States", "mw": 105.0, "rank": null}, {"n": "Google Midlothian", "c": "United States", "mw": 103.0, "rank": null}, {"n": "Google Waltham Cross", "c": "United Kingdom", "mw": 88.0, "rank": null}, {"n": "Meta Gallatin", "c": "United States", "mw": 87.0, "rank": null}, {"n": "Meta Los Lunas", "c": "United States", "mw": 87.0, "rank": null}, {"n": "STACK Infrastructure NVA02", "c": "United States", "mw": 85.0, "rank": null}, {"n": "CoreWeave Chester VA", "c": "United States", "mw": 82.0, "rank": null}, {"n": "Meta Sarpy", "c": "United States", "mw": 80.0, "rank": null}, {"n": "Google Arcola", "c": "United States", "mw": 77.0, "rank": null}, {"n": "Google Red Oak", "c": "United States", "mw": 77.0, "rank": null}, {"n": "Microsoft SAT40", "c": "United States", "mw": 75.0, "rank": null}, {"n": "Nebius Mantsala", "c": "Finland", "mw": 75.0, "rank": null}, {"n": "Oracle Batam", "c": "Indonesia", "mw": 72.0, "rank": null}, {"n": "Meta Aiken", "c": "United States", "mw": 69.0, "rank": null}, {"n": "CoreWeave Ellendale ND", "c": "United States", "mw": 68.0, "rank": null}, {"n": "CoreWeave Marble NC", "c": "United States", "mw": 65.0, "rank": null}, {"n": "Stream Phoenix", "c": "United States", "mw": 64.0, "rank": null}, {"n": "Core42 Lake Mariner", "c": "United States", "mw": 58.0, "rank": null}, {"n": "Microsoft-Nebius New Jersey", "c": "United States", "mw": 50.0, "rank": null}, {"n": "Microsoft SAT14", "c": "United States", "mw": 47.0, "rank": null}, {"n": "Anthropic Lake Mariner", "c": "United States", "mw": 42.0, "rank": null}, {"n": "CoreWeave Norway", "c": "Norway", "mw": 42.0, "rank": null}, {"n": "Southgate Melbourne", "c": "Australia", "mw": 41.0, "rank": null}, {"n": "Start Campus Sines Data Campus", "c": "Portugal", "mw": 33.0, "rank": null}, {"n": "Vantage TX1", "c": "United States", "mw": 32.0, "rank": null}, {"n": "CoreWeave Dalton 1 & 2", "c": "United States", "mw": 28.0, "rank": null}, {"n": "xAI QTS Atlanta", "c": "United States", "mw": 17.3297, "rank": null}, {"n": "Nscale Keflavik", "c": "Iceland", "mw": 5.11, "rank": null}], "ten": [{"rank": 1, "name": "Colossus 2", "place": "Memphis, Tennessee", "country": "United States", "mw": 946.0, "h100": 1111673, "cost": 35.84, "owner": [{"name": "SpaceXAI", "conf": "confident"}], "users": [{"name": "Anthropic", "conf": "confident"}, {"name": "Cursor", "conf": "confident"}, {"name": "SpaceXAI", "conf": "confident"}]}, {"rank": 2, "name": "Anthropic-Amazon New Carlisle", "place": "New Carlisle, Indiana", "country": "United States", "mw": 910.0, "h100": 685912, "cost": 34.47, "owner": [{"name": "Amazon", "conf": "confident"}], "users": [{"name": "Anthropic", "conf": "confident"}]}, {"rank": 3, "name": "Microsoft Fairwater Atlanta", "place": "Fayetteville, Georgia", "country": "United States", "mw": 636.0, "h100": 768769, "cost": 24.09, "owner": [{"name": "Microsoft", "conf": "confident"}], "users": [{"name": "OpenAI", "conf": "likely"}, {"name": "Microsoft", "conf": "likely"}]}, {"rank": 4, "name": "DayOne Nusajaya", "place": "Malaysia", "country": "Malaysia", "mw": 473.0, "h100": 583837, "cost": 17.92, "owner": [], "users": []}, {"rank": 5, "name": "Meta Prometheus", "place": "New Albany, Ohio", "country": "United States", "mw": 471.0, "h100": 536343, "cost": 17.84, "owner": [{"name": "Meta", "conf": "confident"}], "users": [{"name": "Meta", "conf": "confident"}]}, {"rank": 6, "name": "DayOne Kempas", "place": "Johor Bahru, Malaysia", "country": "Malaysia", "mw": 421.692, "h100": 480639, "cost": 15.97, "owner": [], "users": []}, {"rank": 7, "name": "OpenAI Stargate Abilene", "place": "Abilene, Texas", "country": "United States", "mw": 421.0, "h100": 509348, "cost": 15.95, "owner": [{"name": "Oracle", "conf": "confident"}], "users": [{"name": "OpenAI", "conf": "confident"}]}, {"rank": 8, "name": "Microsoft Fairwater Wisconsin", "place": "Mount Pleasant, Wisconsin", "country": "United States", "mw": 369.0, "h100": 445680, "cost": 13.98, "owner": [{"name": "Microsoft", "conf": "confident"}], "users": [{"name": "OpenAI", "conf": "likely"}, {"name": "Microsoft", "conf": "likely"}]}, {"rank": 9, "name": "Google Pryor (North)", "place": "Pryor, Oklahoma", "country": "United States", "mw": 368.0, "h100": 636685, "cost": 13.94, "owner": [{"name": "Google", "conf": "confident"}], "users": [{"name": "Google DeepMind", "conf": "speculative"}]}, {"rank": 10, "name": "Colossus 1", "place": "Memphis, Tennessee", "country": "United States", "mw": 340.0, "h100": 275796, "cost": 12.88, "owner": [{"name": "SpaceXAI", "conf": "confident"}], "users": [{"name": "Anthropic", "conf": "confident"}]}], "totals": {"all": 93, "live": 73, "mw": 13833.4, "tenMw": 5355.7, "medianPerMw": 1137, "costPerMw": 37.882, "updated": "5 October 2026"}};
+const fmt=d3.format(',.0f');
+const REDUCED=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const dur=ms=>REDUCED?0:ms;
+const perMw=s=>s.h100/s.mw;
+const by=n=>D.ten.find(t=>t.name===n);
+let metric='mw', selected=D.ten[0].name;
+
+/* ---------- 1. every site as a circle, sized by power (D3 force layout, run to rest before drawing) ---------- */
+const pack=d3.select('#pack'), tip=d3.select('#tip');
+const K=2.03; // radius per sqrt(MW), so circle area is proportional to power
+const nodes=D.sites.map(s=>({...s,r:K*Math.sqrt(s.mw)}));
+const sim=d3.forceSimulation(nodes)
+  .force('x',d3.forceX(0).strength(.045))
+  .force('y',d3.forceY(0).strength(.3))
+  .force('collide',d3.forceCollide(d=>d.r+1.6).iterations(4))
+  .stop();
+for(let i=0;i<500;i++) sim.tick();
+const pad=10;
+const x0=d3.min(nodes,d=>d.x-d.r)-pad, x1=d3.max(nodes,d=>d.x+d.r)+pad;
+const y0=d3.min(nodes,d=>d.y-d.r)-pad, y1=d3.max(nodes,d=>d.y+d.r)+pad;
+
+const svg=pack.insert('svg','#tip')
+  .attr('viewBox',[x0,y0,x1-x0,y1-y0].join(' '))
+  .attr('role','img')
+  .attr('aria-label',`Packed circles, one for each of the ${D.totals.live} AI data centers with power capacity, sized by megawatts. The ten largest are numbered and highlighted.`);
+
+// draw the smaller sites first so the numbered ones sit on top
+const order=[...nodes].sort((a,b)=>(a.rank?1:0)-(b.rank?1:0)||a.mw-b.mw);
+const site=svg.selectAll('g.site').data(order,d=>d.n).join('g')
+  .attr('class',d=>d.rank?'site tg':'site')
+  .attr('transform',d=>`translate(${d.x},${d.y})`);
+site.append('circle').attr('class',d=>d.rank?'t':'s').attr('r',0);
+site.filter(d=>d.rank).append('circle').attr('class','ring').attr('r',0);
+site.filter(d=>d.rank).attr('tabindex',0).attr('role','button').attr('data-name',d=>d.n)
+  .attr('aria-label',d=>`${d.rank}. ${d.n}, ${fmt(d.mw)} megawatts. Select to open.`)
+  .append('text')
+  .attr('y',d=>Math.max(15,d.r*.78)*.33).attr('font-size',d=>Math.max(15,d.r*.78)).attr('opacity',0)
+  .text(d=>d.rank);
+
+function showTip(event,d){
+  const node=event.currentTarget, box=pack.node().getBoundingClientRect(), b=node.getBoundingClientRect();
+  tip.html(`<b></b><span>${fmt(d.mw)} MW &middot; ${d.c}${d.rank?' &middot; #'+d.rank+' by power':''}</span>`).select('b').text(d.n);
+  tip.style('left',(b.left+b.width/2-box.left)+'px').style('top',(b.top-box.top-8)+'px').style('opacity',1);
+}
+const hideTip=()=>tip.style('opacity',0);
+site.on('mouseenter focus',showTip).on('mouseleave blur',hideTip);
+site.filter(d=>d.rank)
+  .on('click',(e,d)=>select(d.n,true))
+  .on('keydown',(e,d)=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();select(d.n,true)}});
+
+// circles grow in once the figure scrolls into view, largest first
+let grown=false;
+function grow(){
+  if(grown) return; grown=true;
+  site.select('circle').transition().delay((d,i)=>REDUCED?0:(order.length-1-i)*12).duration(dur(700)).ease(d3.easeCubicOut).attr('r',d=>d.r);
+  site.select('circle.ring').transition().delay((d,i)=>REDUCED?0:(order.length-1-i)*12).duration(dur(700)).ease(d3.easeCubicOut).attr('r',d=>d.r+6);
+  site.select('text').transition().delay(dur(500)).duration(dur(400)).attr('opacity',1);
+}
+if('IntersectionObserver' in window&&!REDUCED){
+  const io=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting)){grow();io.disconnect()}},{threshold:.25});
+  io.observe(pack.node());
+}else grow();
+
+/* ---------- 2. the ten, ranked three ways (scales, data join and transitions in D3) ---------- */
+const M={
+  mw:{label:'Power',get:s=>s.mw,txt:s=>fmt(s.mw)+' MW',
+      desc:'Power capacity in megawatts, as Epoch AI estimates it. This is the ranking the ten were chosen by.'},
+  h100:{label:'Computing',get:s=>s.h100,txt:s=>(s.h100/1e6).toFixed(2)+' million',
+      desc:'Computing in H100-equivalents, Epoch’s unit for comparing different chips. Bars show how much each site holds.'},
+  per:{label:'Computing per megawatt',get:perMw,txt:s=>fmt(perMw(s)),
+      desc:'Computing divided by power: how much each megawatt buys. It is derived from Epoch’s two estimates, and it depends on the chips at each site.'}
+};
+d3.select('#seg').selectAll('button').data(Object.keys(M)).join('button')
+  .attr('type','button').text(k=>M[k].label).attr('aria-pressed',k=>k===metric)
+  .on('click',(e,k)=>{metric=k;d3.selectAll('#seg button').attr('aria-pressed',b=>b===k);renderList(true)});
+
+const list=d3.select('#list');
+const rows=list.selectAll('button.row').data(D.ten,d=>d.name).join(enter=>{
+  const r=enter.append('button').attr('type','button').attr('class','row');
+  r.append('span').attr('class','rk');
+  const main=r.append('span').attr('class','main');
+  const nm=main.append('span').attr('class','nm');
+  nm.append('b').text(d=>d.name); nm.append('span').attr('class','v');
+  main.append('span').attr('class','track').append('span').attr('class','bar');
+  return r;
+}).on('click',(e,d)=>select(d.name,'row'));
+
+const rowH=()=>parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--rowH'))||68;
+function renderList(animate){
+  const m=M[metric], h=rowH();
+  list.style('height',(h*D.ten.length)+'px');
+  const sorted=[...D.ten].sort((a,b)=>m.get(b)-m.get(a));
+  const pos=new Map(sorted.map((s,i)=>[s.name,i]));
+  const w=d3.scaleLinear([0,m.get(sorted[0])],[0,100]);
+  const t=d3.transition().duration(animate?dur(600):0).ease(d3.easeCubicOut);
+  rows.attr('aria-pressed',d=>d.name===selected)
+    .attr('aria-label',d=>`${pos.get(d.name)+1}. ${d.name}, ${m.txt(d)}`)
+    .transition(t).style('transform',d=>`translateY(${pos.get(d.name)*h}px)`);
+  rows.select('.rk').text(d=>String(pos.get(d.name)+1).padStart(2,'0'));
+  rows.select('.v').text(d=>m.txt(d));
+  rows.select('.bar').transition(t).style('width',d=>w(m.get(d))+'%');
+  d3.select('#mdesc').text(m.desc);
+}
+addEventListener('resize',()=>renderList(false));
+
+/* ---------- 3. detail for the selected site ---------- */
+const detail=d3.select('#detail');
+const people=a=>a.length?a.map(p=>`${p.name}${p.conf?`<span class="conf">${p.conf}</span>`:''}`).join(', '):'<span style="color:var(--soft)">Not listed in Epoch’s data</span>';
+function renderDetail(){
+  const s=by(selected), share=s.mw/D.totals.mw*100;
+  detail.html(`<span class="mono">#${s.rank} by power</span>
+  <h3></h3><div class="where"></div>
+  <dl class="facts">
+    <div class="fact"><dt>Power capacity</dt><dd>${fmt(s.mw)} MW<small>${share.toFixed(1)}% of the ${fmt(D.totals.mw)} MW tracked</small></dd></div>
+    <div class="fact"><dt>Computing</dt><dd>${(s.h100/1e6).toFixed(2)} million<small>H100-equivalents</small></dd></div>
+    <div class="fact"><dt>Per megawatt</dt><dd>${fmt(perMw(s))}<small>median across ${D.totals.live} sites: ${fmt(D.totals.medianPerMw)}</small></dd></div>
+    <div class="fact"><dt>Implied cost</dt><dd>$${s.cost.toFixed(1)} billion<small>at a flat $${D.totals.costPerMw.toFixed(1)}M per MW</small></dd></div>
+  </dl>
+  <div class="who"><p><span class="k">Owner</span>${people(s.owner)}</p><p><span class="k">Users</span>${people(s.users)}</p></div>`);
+  detail.select('h3').text(s.name); detail.select('.where').text(s.place);
+}
+function select(name,scroll){
+  selected=name;
+  rows.attr('aria-pressed',d=>d.name===name);
+  site.filter(d=>d.rank).classed('on',d=>d.n===name);
+  renderDetail();
+  const narrow=matchMedia('(max-width:860px)').matches;
+  const target=narrow?detail.node():(scroll===true?document.getElementById('h-ten'):null);
+  if(scroll&&target) target.scrollIntoView({behavior:REDUCED?'auto':'smooth',block:'start'});
+}
+
+/* ---------- 4. the ten as a table ---------- */
+const flat=a=>a.length?a.map(p=>p.name+(p.conf?` (${p.conf})`:'')).join(', '):'Not listed';
+const tbl=d3.select('#tbl');
+tbl.append('thead').append('tr').selectAll('th')
+  .data([['#',0],['Site',0],['Location',0],['Owner',0],['Users',0],['MW',1],['H100-equiv.',1],['Implied cost, $bn',1]]).join('th')
+  .attr('class',d=>d[1]?'num':null).text(d=>d[0]);
+tbl.append('tbody').selectAll('tr').data(D.ten).join('tr').selectAll('td')
+  .data(s=>[[s.rank],[s.name],[s.place],[flat(s.owner)],[flat(s.users)],[fmt(s.mw),1],[fmt(s.h100),1],[s.cost.toFixed(1),1]]).join('td')
+  .attr('class',d=>d[1]?'num':null).text(d=>d[0]);
+
+renderList(false); select(selected);
+})();
+</script>
+</body>
+</html>

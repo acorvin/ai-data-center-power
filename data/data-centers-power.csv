@@ -1,0 +1,94 @@
+Rank by power,Site,Country,Power capacity (MW),Computing (H100-equivalents),Implied capital cost (2025 USD billions),Group
+1,Colossus 2,United States,946,1111673,35.84,Ten largest
+2,Anthropic-Amazon New Carlisle,United States,910,685912,34.47,Ten largest
+3,Microsoft Fairwater Atlanta,United States,636,768769,24.09,Ten largest
+4,DayOne Nusajaya,Malaysia,473,583837,17.92,Ten largest
+5,Meta Prometheus,United States,471,536343,17.84,Ten largest
+6,DayOne Kempas,Malaysia,421.692,480639,15.97,Ten largest
+7,OpenAI Stargate Abilene,United States,421,509348,15.95,Ten largest
+8,Microsoft Fairwater Wisconsin,United States,369,445680,13.98,Ten largest
+9,Google Pryor (North),United States,368,636685,13.94,Ten largest
+10,Colossus 1,United States,340,275796,12.88,Ten largest
+11,Google New Albany,United States,333,323901,12.61,Other sites with capacity
+12,Google Columbus,United States,303,331986,11.48,Other sites with capacity
+13,Amazon Madison Mega Site,United States,284,214348,10.76,Other sites with capacity
+14,CoreWeave Denton TX,United States,262,252653,9.93,Other sites with capacity
+15,QTS Richmond 1,United States,238,242547,9.02,Other sites with capacity
+16,Google Bristow,United States,238,209861,9.02,Other sites with capacity
+17,Google Council Bluffs (East),United States,237,255685,8.98,Other sites with capacity
+18,Google Omaha,United States,237,198585,8.98,Other sites with capacity
+19,Google Papillion,United States,237,100556,8.98,Other sites with capacity
+20,Amazon Ridgeland,United States,228,171299,8.64,Other sites with capacity
+21,VNET Bayin Ulanqab,China,221,122789,8.37,Other sites with capacity
+22,AWS New Albany,United States,213,201112,8.07,Other sites with capacity
+23,Microsoft Goodyear,United States,202,205154,7.65,Other sites with capacity
+24,Microsoft Project Osmium,United States,190,155634,7.20,Other sites with capacity
+25,Huawei Horinger,China,184.3,89439,6.98,Other sites with capacity
+26,Google Mesa,United States,183,289540,6.93,Other sites with capacity
+27,QTS Richmond 2,United States,180,182921,6.82,Other sites with capacity
+28,Meta-QTS Hillsboro 2,United States,180,123839,6.82,Other sites with capacity
+29,Meta Rosemount,United States,178,215675,6.74,Other sites with capacity
+30,Meta Jeffersonville,United States,178,203133,6.74,Other sites with capacity
+31,Meta Temple,United States,178,202473,6.74,Other sites with capacity
+32,Alibaba Zhangbei,China,169,31885,6.40,Other sites with capacity
+33,Google Storey County,United States,161,133906,6.10,Other sites with capacity
+34,Huawei Wuhu,China,157,76326,5.95,Other sites with capacity
+35,Google The Dalles,United States,154,175341,5.83,Other sites with capacity
+36,Meta Montgomery,United States,153,174517,5.80,Other sites with capacity
+37,Meta Kuna,United States,152,173248,5.76,Other sites with capacity
+38,Meta Cheyenne,United States,152,172815,5.76,Other sites with capacity
+39,Meta Huntsville,United States,146,166761,5.53,Other sites with capacity
+40,QTS Richmond 3,United States,144,174836,5.46,Other sites with capacity
+41,Google Lincoln,United States,141,197575,5.34,Other sites with capacity
+42,Google Lancaster,United States,137,130369,5.19,Other sites with capacity
+43,Meta Eagle Mountain,United States,133,151354,5.04,Other sites with capacity
+44,Coreweave Helios,United States,132,159552,5.00,Other sites with capacity
+45,AWS Berwick,United States,108,81354,4.09,Other sites with capacity
+46,Google Kansas City East,United States,105,202628,3.98,Other sites with capacity
+47,Google Midlothian,United States,103,143581,3.90,Other sites with capacity
+48,Google Waltham Cross,United Kingdom,88,123800,3.33,Other sites with capacity
+49,Meta Gallatin,United States,87,99545,3.30,Other sites with capacity
+50,Meta Los Lunas,United States,87,99545,3.30,Other sites with capacity
+51,STACK Infrastructure NVA02,United States,85,61142,3.22,Other sites with capacity
+52,CoreWeave Chester VA,United States,82,88428,3.11,Other sites with capacity
+53,Meta Sarpy,United States,80,91966,3.03,Other sites with capacity
+54,Google Arcola,United States,77,108135,2.92,Other sites with capacity
+55,Google Red Oak,United States,77,108135,2.92,Other sites with capacity
+56,Microsoft SAT40,United States,75,64679,2.84,Other sites with capacity
+57,Nebius Mantsala,Finland,75,48528,2.84,Other sites with capacity
+58,Oracle Batam,Indonesia,72,84386,2.73,Other sites with capacity
+59,Meta Aiken,United States,69,78322,2.61,Other sites with capacity
+60,CoreWeave Ellendale ND,United States,68,93482,2.58,Other sites with capacity
+61,CoreWeave Marble NC,United States,65,78828,2.46,Other sites with capacity
+62,Stream Phoenix,United States,64,46134,2.42,Other sites with capacity
+63,Core42 Lake Mariner,United States,58,71753,2.20,Other sites with capacity
+64,Microsoft-Nebius New Jersey,United States,50,56847,1.89,Other sites with capacity
+65,Microsoft SAT14,United States,47,45174,1.78,Other sites with capacity
+66,Anthropic Lake Mariner,United States,42,58565,1.59,Other sites with capacity
+67,CoreWeave Norway,Norway,42,50773,1.59,Other sites with capacity
+68,Southgate Melbourne,Australia,41,46488,1.55,Other sites with capacity
+69,Start Campus Sines Data Campus,Portugal,33,31834,1.25,Other sites with capacity
+70,Vantage TX1,United States,32,38706,1.21,Other sites with capacity
+71,CoreWeave Dalton 1 & 2,United States,28,32239,1.06,Other sites with capacity
+72,xAI QTS Atlanta,United States,17.3297,11470,0.66,Other sites with capacity
+73,Nscale Keflavik,Iceland,5.11,5821,0.19,Other sites with capacity
+74,Anthropic Barber Lake,United States,0,0,0.00,No capacity yet
+75,CoreWeave Lancaster Greenfield site,United States,0,0,0.00,No capacity yet
+76,CoreWeave Muskogee OK,United States,0,0,0.00,No capacity yet
+77,Crusoe Abilene Expansion,United States,0,0,0.00,No capacity yet
+78,EcoDataCenter 2,Sweden,0,0,0.00,No capacity yet
+79,Goodnight,United States,0,0,0.00,No capacity yet
+80,Google Cedar Rapids,United States,0,0,0.00,No capacity yet
+81,Google Fort Wayne,United States,0,0,0.00,No capacity yet
+82,Meta Bowling Green,United States,0,0,0.00,No capacity yet
+83,Meta Hyperion,United States,0,0,0.00,No capacity yet
+84,Microsoft Narvik Norway,Norway,0,0,0.00,No capacity yet
+85,OpenAI Stargate Lordstown,United States,0,0,0.00,No capacity yet
+86,OpenAI Stargate Michigan,United States,0,0,0.00,No capacity yet
+87,OpenAI Stargate Milam,United States,0,0,0.00,No capacity yet
+88,OpenAI Stargate New Mexico,United States,0,0,0.00,No capacity yet
+89,OpenAI Stargate Shackelford,United States,0,0,0.00,No capacity yet
+90,OpenAI Stargate UAE,United Arab Emirates,0,0,0.00,No capacity yet
+91,OpenAI Stargate Wisconsin,United States,0,0,0.00,No capacity yet
+92,QTS Cedar Rapids,United States,0,0,0.00,No capacity yet
+93,QTS Eagle Mountain,United States,0,0,0.00,No capacity yet

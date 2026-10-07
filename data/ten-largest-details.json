@@ -1,0 +1,148 @@
+{
+  "Colossus 2": {
+    "place": "Memphis, Tennessee",
+    "owner": [
+      {
+        "name": "SpaceXAI",
+        "conf": "confident"
+      }
+    ],
+    "users": [
+      {
+        "name": "Anthropic",
+        "conf": "confident"
+      },
+      {
+        "name": "Cursor",
+        "conf": "confident"
+      },
+      {
+        "name": "SpaceXAI",
+        "conf": "confident"
+      }
+    ]
+  },
+  "Anthropic-Amazon New Carlisle": {
+    "place": "New Carlisle, Indiana",
+    "owner": [
+      {
+        "name": "Amazon",
+        "conf": "confident"
+      }
+    ],
+    "users": [
+      {
+        "name": "Anthropic",
+        "conf": "confident"
+      }
+    ]
+  },
+  "Microsoft Fairwater Atlanta": {
+    "place": "Fayetteville, Georgia",
+    "owner": [
+      {
+        "name": "Microsoft",
+        "conf": "confident"
+      }
+    ],
+    "users": [
+      {
+        "name": "OpenAI",
+        "conf": "likely"
+      },
+      {
+        "name": "Microsoft",
+        "conf": "likely"
+      }
+    ]
+  },
+  "DayOne Nusajaya": {
+    "place": "Malaysia",
+    "owner": [],
+    "users": []
+  },
+  "Meta Prometheus": {
+    "place": "New Albany, Ohio",
+    "owner": [
+      {
+        "name": "Meta",
+        "conf": "confident"
+      }
+    ],
+    "users": [
+      {
+        "name": "Meta",
+        "conf": "confident"
+      }
+    ]
+  },
+  "DayOne Kempas": {
+    "place": "Johor Bahru, Malaysia",
+    "owner": [],
+    "users": []
+  },
+  "OpenAI Stargate Abilene": {
+    "place": "Abilene, Texas",
+    "owner": [
+      {
+        "name": "Oracle",
+        "conf": "confident"
+      }
+    ],
+    "users": [
+      {
+        "name": "OpenAI",
+        "conf": "confident"
+      }
+    ]
+  },
+  "Microsoft Fairwater Wisconsin": {
+    "place": "Mount Pleasant, Wisconsin",
+    "owner": [
+      {
+        "name": "Microsoft",
+        "conf": "confident"
+      }
+    ],
+    "users": [
+      {
+        "name": "OpenAI",
+        "conf": "likely"
+      },
+      {
+        "name": "Microsoft",
+        "conf": "likely"
+      }
+    ]
+  },
+  "Google Pryor (North)": {
+    "place": "Pryor, Oklahoma",
+    "owner": [
+      {
+        "name": "Google",
+        "conf": "confident"
+      }
+    ],
+    "users": [
+      {
+        "name": "Google DeepMind",
+        "conf": "speculative"
+      }
+    ]
+  },
+  "Colossus 1": {
+    "place": "Memphis, Tennessee",
+    "owner": [
+      {
+        "name": "SpaceXAI",
+        "conf": "confident"
+      }
+    ],
+    "users": [
+      {
+        "name": "Anthropic",
+        "conf": "confident"
+      }
+    ]
+  }
+}
