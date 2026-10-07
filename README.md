@@ -2,6 +2,8 @@
 
 **Ten data centers hold 39% of the AI power capacity Epoch AI tracks.** An interactive page on the largest AI data centers in Epoch AI's open database. It shows all 73 sites with power capacity as circles sized by megawatts, then ranks the ten largest by power, by computing and by computing per megawatt, and opens each one to show its owner, users and estimated cost.
 
+Live page: https://acorvin.github.io/ai-data-center-power/
+
 Both figures are drawn with D3: the circle layout is a D3 force simulation computed in the browser, and the ranked list uses D3 scales, a data join and transitions.
 
 ## Run it
