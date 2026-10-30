@@ -1,10 +1,22 @@
 # AI Data Center Power
 
-**Ten data centers hold 39% of the AI power capacity Epoch AI tracks.** An interactive page on the largest AI data centers in Epoch AI's open database. It shows all 73 sites with power capacity as circles sized by megawatts, then ranks the ten largest by power, by computing and by computing per megawatt, and opens each one to show its owner, users and estimated cost.
+An interactive page on the largest AI data centers in Epoch AI's open database.
 
 Live page: https://acorvin.github.io/ai-data-center-power/
 
-Both figures are drawn with D3: the circle layout is a D3 force simulation computed in the browser, and the ranked list uses D3 scales, a data join and transitions.
+## The problem
+
+Epoch AI's open database lists 93 data centers built for artificial intelligence, with estimates of their power, computing and cost. As a table it does not show how concentrated that capacity is, or how the largest sites compare when ranked by power instead of by computing.
+
+## What I did
+
+I drew all 73 sites that have power capacity today as circles sized by megawatts, using a D3 force layout, and ranked the ten largest three ways: by power, by computing, and by computing per megawatt. Each site opens to show its owner, its users and its estimated cost. A Python script reads Epoch's data, works out the totals and builds the page.
+
+## What it found
+
+- The ten largest sites hold 5,356 of the 13,833 megawatts in the database, or 39%.
+- Eight of the ten are in the United States, and the other two are DayOne sites in Malaysia.
+- Google's Pryor site has the ninth-most power of the ten but the fourth-most computing, at an estimated 1,730 H100-equivalents per megawatt, against a median of 1,137 across all 73 sites.
 
 ## Run it
 
